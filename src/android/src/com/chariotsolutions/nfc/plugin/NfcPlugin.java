@@ -74,6 +74,10 @@ public class NfcPlugin extends CordovaPlugin implements NfcAdapter.OnNdefPushCom
     private CallbackContext shareTagCallback;
     private CallbackContext handoverCallback;
 
+    protected Activity getActivity() {
+        return this.cordova.getActivity();
+    }
+    
     @Override
     public boolean execute(String action, JSONArray data, CallbackContext callbackContext) throws JSONException {
 
@@ -761,9 +765,6 @@ public class NfcPlugin extends CordovaPlugin implements NfcAdapter.OnNdefPushCom
         parseMessage();
     }
 
-    private Activity getActivity() {
-        return this.cordova.getActivity();
-    }
 
     private Intent getIntent() {
         return getActivity().getIntent();
