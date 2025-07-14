@@ -14,15 +14,16 @@
     <repo>https://github.com/chariotsolutions/phonegap-nfc.git</repo>
     <issue>https://github.com/chariotsolutions/phonegap-nfc/issues</issue>
 
+
+    <variable name="ANDROID-MINSDKVERSION" default="22" />
+    <variable name="ANDROID-TARGETSDKVERSION" default="33" />
+    <variable name="ANDROIDXENABLED" default="true" />
+
     <platform name="android">
         <js-module src="www/phonegap-nfc.js" name="NFC">
             <runs />
         </js-module>
 
-        <preference name="android-minSdkVersion" value="22" />
-        <preference name="android-targetSdkVersion" value="33" />
-        <preference name="AndroidXEnabled" value="true" />
-        
 
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="NfcPlugin">
