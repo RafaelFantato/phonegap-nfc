@@ -17,6 +17,7 @@ import android.nfc.tech.Ndef;
 import android.nfc.tech.NdefFormatable;
 import android.os.Parcelable;
 import android.util.Log;
+import androidx.core.app.ActivityCompat;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -149,6 +150,10 @@ public class NfcPlugin extends CordovaPlugin implements NfcAdapter.OnNdefPushCom
         }
 
         return true;
+    }
+
+    private Activity getActivity() {
+        return this.cordova.getActivity();
     }
 
     private String getNfcStatus() {
@@ -761,9 +766,6 @@ public class NfcPlugin extends CordovaPlugin implements NfcAdapter.OnNdefPushCom
         parseMessage();
     }
 
-    private Activity getActivity() {
-        return this.cordova.getActivity();
-    }
 
     private Intent getIntent() {
         return getActivity().getIntent();
