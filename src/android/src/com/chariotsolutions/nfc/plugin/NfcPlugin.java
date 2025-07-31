@@ -18,6 +18,8 @@ import android.nfc.tech.NdefFormatable;
 import android.os.Parcelable;
 import android.util.Log;
 import androidx.core.app.ActivityCompat;
+import android.nfc.tech.MifareClassic;
+
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -184,6 +186,7 @@ public class NfcPlugin extends CordovaPlugin implements NfcAdapter.OnNdefPushCom
 
     private void registerNdef(CallbackContext callbackContext) {
       addTechList(new String[]{Ndef.class.getName()});
+      addTechList(new String[]{Ndef.class.getName(), MifareClassic.class.getName()});
       callbackContext.success();
   }
 
@@ -657,6 +660,9 @@ public class NfcPlugin extends CordovaPlugin implements NfcAdapter.OnNdefPushCom
                         } else if (tagTech.equals(Ndef.class.getName())) { //
                             Ndef ndef = Ndef.get(tag);
                             fireNdefEvent(NDEF, ndef, messages);
+                        }else if (tagTech.equals(MifareClassic.class.getName())) {
+                            Log.d(TAG, "MIFARE Classic tag detected");
+                            fireTagEvent(tag); // Reaproveita o mesmo evento genérico
                         }
                     }
                 }
